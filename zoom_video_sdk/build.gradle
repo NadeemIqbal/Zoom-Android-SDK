@@ -48,7 +48,7 @@ afterEvaluate {
         publications {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
-                from components.release
+//                from components.release
                 groupId = 'com.github.NadeemIqbal'
                 artifactId = 'zoom-android-sdk'
                 version = '1.1.2'
