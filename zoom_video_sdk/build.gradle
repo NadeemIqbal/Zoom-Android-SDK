@@ -1,0 +1,5 @@
+configurations.create("default")
+artifacts.add("default", file('zoom_video_sdk_1.1.2.aar'))
+
+dependencies.add("default","androidx.security:security-crypto:1.1.0-alpha02")
+dependencies.add("default","com.google.crypto.tink:tink-android:1.5.0")
