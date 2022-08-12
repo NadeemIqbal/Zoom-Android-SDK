@@ -1,5 +1,58 @@
-configurations.create("default")
-artifacts.add("default", file('zoom_video_sdk_1.1.2.aar'))
 
-dependencies.add("default","androidx.security:security-crypto:1.1.0-alpha02")
-dependencies.add("default","com.google.crypto.tink:tink-android:1.5.0")
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
+
+group = 'com.github.jitpack'
+version = '1.0'
+
+
+configurations.create("default1")
+artifacts.add("default1", file('zoom_video_sdk_1.1.2.aar'))
+
+dependencies.add("default1","androidx.security:security-crypto:1.1.0-alpha02")
+dependencies.add("default1","com.google.crypto.tink:tink-android:1.5.0")
+
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.1.2"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.NadeemIqbal'
+                artifactId = 'zoom-android-sdk'
+                version = '1.1.2'
+            }
+        }
+    }
+}
