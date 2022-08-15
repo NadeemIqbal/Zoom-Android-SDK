@@ -1,17 +1,19 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+//pluginManagement {
+//    repositories {
+//        gradlePluginPortal()
+//        google()
+//        mavenCentral()
+////        maven { url "$project.projectDir/libs" }
+//    }
+//}
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+////        maven { url "$project.projectDir/libs" }
+//    }
+//}
 rootProject.name = "ZoomVideoSDKGitHub"
 include ':app'
 include ':zoom_video_sdk'

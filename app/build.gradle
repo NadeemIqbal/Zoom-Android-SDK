@@ -1,17 +1,19 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 32
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.nadeem.zoomvideosdkgithub"
-        minSdk 23
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        targetSdkVersion 32
+        versionCode 19
+        versionName "1.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
