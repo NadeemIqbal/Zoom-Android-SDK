@@ -5,6 +5,9 @@ buildscript {
         google()
         jcenter()
 
+        maven {
+            url "https://jitpack.io"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.2"
@@ -24,6 +27,10 @@ allprojects {
 //        maven {
 //            url "https://ngi.jfrog.io/artifactory/zoom-gradle-dev"
 //        }
+
+        maven {
+            url "https://jitpack.io"
+        }
     }
 }
 //artifactoryPublish.skip = true
