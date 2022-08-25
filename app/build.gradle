@@ -45,6 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
+//    implementation project (path:':zoom_video_sdk')
+    implementation 'com.github.NadeemIqbal:Zoom-Android-SDK:1.1.2'
 
-    implementation project (path:':zoom_video_sdk')
 }
