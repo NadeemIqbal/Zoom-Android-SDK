@@ -1,26 +1,86 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
-     repositories {
+    repositories {
         google()
         jcenter()
 
-     }
+    }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.29.0"
 
     }
 }
 
 allprojects {
+    apply plugin: 'com.jfrog.artifactory'
+    apply plugin: 'maven-publish'
+
     repositories {
         google()
-        jcenter()
         mavenCentral()
-        maven{ url 'https://jitpack.io' }
+        maven {
+            url "https://ngi.jfrog.io/artifactory/zoom-gradle-dev"
+        }
     }
 }
+artifactoryPublish.skip = true
+
+
+group = 'com.github.NadeemIqbal'
+version = '1.1.2'
+
+project('zoom_video_sdk') {
+    artifactoryPublish.dependsOn('build')
+    publishing {
+        publications {
+            aar(MavenPublication) {
+                groupId = group
+                artifactId = project.getName()
+                version = version
+                // Tell maven to prepare the generated "*.aar" file for publishing
+                artifact("libs/zoom_video_sdk_1_1_2.aar")
+            }
+        }
+    }
+
+    artifactoryPublish {
+        publications(publishing.publications.aar)
+    }
+}
+
+artifactory {
+    clientConfig.setIncludeEnvVars(true)
+    clientConfig.info.addEnvironmentProperty('test.adding.dynVar',new Date().toString())
+
+    contextUrl = 'https://ngi.jfrog.io/artifactory'
+    publish {
+        repository {
+            repoKey = 'zoom-gradle-dev-local' // The Artifactory repository key to publish to
+            username = "${artifactory_user}" // The publisher user name
+            password = "${artifactory_password}" // The publisher password
+            maven = true
+            // This is an optional section for configuring Ivy publication (when publishIvy = true).
+//            ivy {
+//                ivyLayout = '[organization]/[module]/ivy-[revision].xml'
+//                artifactLayout = '[organization]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]'
+//                mavenCompatible = true //Convert any dots in an [organization] layout value to path separators, similar to Maven's groupId-to-path conversion. True if not specified
+//            }
+        }
+        defaults {
+            // Reference to Gradle publications defined in the build script.
+            // This is how we tell the Artifactory Plugin which artifacts should be
+            // published to Artifactory.
+            publishArtifacts = true
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team' : 'core']
+            publishPom = true // Publish generated POM files to Artifactory (true by default)
+        }
+    }
+}
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
