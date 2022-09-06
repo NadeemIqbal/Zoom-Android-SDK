@@ -1,0 +1,16 @@
+//apply plugin: 'com.android.library'
+//buildscript {
+//    repositories {
+//        google()//in newer versions of Android Studio
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:3.0.1'
+//    }
+//}
+
+configurations.maybeCreate("default")
+artifacts.add("default", file("zoom_video_sdk_1.1.2.aar"))
+
+//Change group to whatever you want. Here I'm using the package from the aar that I'm importing from
+group = "com.zoom.zoom_video_sdk"
+version = "1.1.2"

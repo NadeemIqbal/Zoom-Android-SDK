@@ -85,6 +85,9 @@ dependencies {
 //    api ("com.github.NadeemIqbal:zoom-aar:1.1.2")
 
 //    api "zoom:zoom-meeting:1.1.2"
+
+    api ("com.zoom.zoom_video_sdk:mylibrary:1.1.2")
+
 }
 
 //afterEvaluate {
