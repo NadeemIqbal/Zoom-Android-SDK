@@ -29,7 +29,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 32
         versionCode 1
-        versionName "1.1.2"
+        versionName "1.5.2"
 
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -80,13 +80,14 @@ dependencies {
 
 //    api "zoom:zoom-meeting:1.1.2"
 
-    api ("androidx.security:security-crypto:1.1.0-alpha02")
+    api ("androidx.security:security-crypto:1.1.0-alpha03")
     api ("com.google.crypto.tink:tink-android:1.5.0")
+
 //    api ("com.github.NadeemIqbal:zoom-aar:1.1.2")
 
 //    api "zoom:zoom-meeting:1.1.2"
 
-    api ("com.zoom.zoom_video_sdk:mylibrary:1.1.2")
+    api ("com.zoom.zoom_video_sdk:mylibrary:1.5.2")
 
 }
 
