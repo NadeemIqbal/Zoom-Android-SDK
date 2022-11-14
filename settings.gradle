@@ -1,3 +1,21 @@
+
+/* Optional - automatically sync gradle files for included build */
+//rootDir.run {
+//    listOf(
+//            "gradle.properties",
+//            "gradlew.bat",
+//            "gradlew",
+//            "gradle/wrapper/gradle-wrapper.jar",
+//            "gradle/wrapper/gradle-wrapper.properties"
+//    ).map { path ->
+//        resolve(path)
+//                .copyTo(
+//                        target = rootDir.resolve("mylibrary").resolve(path),
+//                        overwrite = true
+//                )
+//    }
+//}
+
 //pluginManagement {
 //    repositories {
 //        gradlePluginPortal()
@@ -15,5 +33,6 @@
 //    }
 //}
 rootProject.name = "ZoomVideoSDKGitHub"
-include ':app'
-include ':zoom_video_sdk'
+include(':app')
+include(':zoom_video_sdk')
+includeBuild('mylibrary')

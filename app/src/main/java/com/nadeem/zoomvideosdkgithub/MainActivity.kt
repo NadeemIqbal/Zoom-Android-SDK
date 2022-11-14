@@ -3,6 +3,7 @@ package com.nadeem.zoomvideosdkgithub
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import us.zoom.sdk.ZoomVideoSDK
+import us.zoom.sdk.ZoomVideoSDKDelegate
 import us.zoom.sdk.ZoomVideoSDKInitParams
 import us.zoom.sdk.ZoomVideoSDKRawDataMemoryMode
 
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             ZoomVideoSDKRawDataMemoryMode.ZoomVideoSDKRawDataMemoryModeHeap
 
         ZoomVideoSDK.getInstance().initialize(this,params)
-
 
     }
 }
